@@ -2,6 +2,9 @@ package com.example.mylibrary.utils
 
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,21 +50,26 @@ class WSRetrofit(){
         }
 
     })*/
-    fun <T>WsRetrofitGetData(call: Call<T>):T?{
+    suspend fun <T>WsRetrofitGetData(call: Call<T>):T?{
         var   data :T ?= null
-        call.enqueue(object : Callback<T>{
-            override fun onFailure(call: Call<T>, t: Throwable) {
-                Log.d("WsRetrofitGetData", "onFailure: ${t.message}")
-            }
+        val async = GlobalScope.async(Dispatchers.IO){
+            call.enqueue(object : Callback<T> {
+                override fun onFailure(call: Call<T>, t: Throwable) {
+                    Log.d("WsRetrofitGetData", "onFailure: ${t.message}")
+                }
 
-            override fun onResponse(
-                call: Call<T>,
-                response: Response<T>
-            ) {
-                data = response.body()
-            }
-        })
-        return data
+                override fun onResponse(
+                    call: Call<T>,
+                    response: Response<T>
+                ) {
+                    data = response.body()
+
+                }
+            })
+            data
+        }
+        return async.await()
+
     }
 
 }
