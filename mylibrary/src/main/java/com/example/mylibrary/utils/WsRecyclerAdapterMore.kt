@@ -23,6 +23,7 @@ import com.example.mylibrary.assist.WsViewHolder
     }
 
     override fun getItemCount(): Int {
+
         return WsItemCount()
     }
 

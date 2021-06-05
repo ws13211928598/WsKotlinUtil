@@ -20,7 +20,7 @@ class WsViewPager2init() {
     constructor(context: FragmentActivity,
                 viewPager2: ViewPager2,
                 tabLayout: TabLayout,
-                fragmentMutableList: MutableList<Fragment>) {
+                fragmentMutableList: MutableList<Fragment>) : this() {
         viewPager2.adapter = object : FragmentStateAdapter(context) {
             override fun getItemCount(): Int {
                 return fragmentMutableList.size
@@ -42,7 +42,7 @@ class WsViewPager2init() {
                 tabLayout: TabLayout,
                 fragmentMutableList: MutableList<Fragment>,
                 tabName: MutableList<String>,
-                tabIconID: MutableList<Int>) {
+                tabIconID: MutableList<Int>) : this() {
         viewPager2.adapter = object : FragmentStateAdapter(context) {
             override fun getItemCount(): Int {
                 return fragmentMutableList.size
@@ -64,7 +64,7 @@ class WsViewPager2init() {
             viewPager2: ViewPager2,
             tabLayout: TabLayout,
             fragmentMutableList: MutableList<Fragment>,
-            tabName: MutableList<String>) {
+            tabName: MutableList<String>) : this() {
         viewPager2.adapter = object : FragmentStateAdapter(context) {
             override fun getItemCount(): Int {
                 return fragmentMutableList.size
