@@ -3,6 +3,7 @@ package com.example.mylibrary.assist
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.mylibrary.utils.RetrofitWs
 
 /**
  *  created by ws
@@ -11,6 +12,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
  */
 class WsViewPageAdapter(fragment: Fragment): FragmentStateAdapter(fragment){
     override fun getItemCount(): Int {
+
         TODO("Not yet implemented")
     }
 
