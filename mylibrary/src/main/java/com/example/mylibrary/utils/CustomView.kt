@@ -74,12 +74,12 @@ class SinceTheDrawView @JvmOverloads constructor(
     }
 }
 
-
 /**onLayout必须要实现,如果里面的方法为空,那么该控件的子View就无法显示了.
  * 要想准确测量,onMeasure方法也要重写*/
 class SinceTheDrawViewGroup @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : ViewGroup(context, attrs, defStyleAttr) {
+
     var lastX = 0
     var lastY = 0
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

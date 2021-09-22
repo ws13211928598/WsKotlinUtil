@@ -13,7 +13,7 @@ import androidx.viewbinding.ViewBinding
  *   describe:
  */
 abstract class WsBaseFragment<VB : ViewBinding> : Fragment() {
-    private lateinit var _binding: VB
+    private lateinit var _binding: ViewBinding
     protected val binding get() = _binding
     var TAG = "asdws"
     override fun onCreateView(
@@ -21,6 +21,7 @@ abstract class WsBaseFragment<VB : ViewBinding> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         _binding = getBinding(inflater, container)
         return _binding.root
     }
