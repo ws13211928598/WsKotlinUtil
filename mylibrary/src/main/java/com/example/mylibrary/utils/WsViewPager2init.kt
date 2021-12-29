@@ -15,11 +15,12 @@ import com.google.android.material.tabs.TabLayoutMediator
  *   describe:
  */
 class WsViewPager2init() {
-    var limit: Int = 0
+
 
     constructor(context: FragmentActivity,
                 viewPager2: ViewPager2,
                 tabLayout: TabLayout,
+                 limit: Int ,
                 fragmentMutableList: MutableList<Fragment>) : this() {
         viewPager2.adapter = object : FragmentStateAdapter(context) {
             override fun getItemCount(): Int {
@@ -40,6 +41,7 @@ class WsViewPager2init() {
     constructor(context: FragmentActivity,
                 viewPager2: ViewPager2,
                 tabLayout: TabLayout,
+                limit: Int ,
                 fragmentMutableList: MutableList<Fragment>,
                 tabName: MutableList<String>,
                 tabIconID: MutableList<Int>) : this() {
@@ -63,6 +65,7 @@ class WsViewPager2init() {
             context: FragmentActivity,
             viewPager2: ViewPager2,
             tabLayout: TabLayout,
+            limit: Int ,
             fragmentMutableList: MutableList<Fragment>,
             tabName: MutableList<String>) : this() {
         viewPager2.adapter = object : FragmentStateAdapter(context) {

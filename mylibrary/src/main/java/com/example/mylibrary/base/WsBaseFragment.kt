@@ -13,7 +13,7 @@ import androidx.viewbinding.ViewBinding
  *   describe:
  */
 abstract class WsBaseFragment<VB : ViewBinding> : Fragment() {
-    private lateinit var _binding: ViewBinding
+    private  var _binding: VB? = null
     protected val binding get() = _binding
     var TAG = "asdws"
     override fun onCreateView(
@@ -21,9 +21,9 @@ abstract class WsBaseFragment<VB : ViewBinding> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        //FragmentHomeBinding.inflate(layoutInflater,viewGroup,false)
         _binding = getBinding(inflater, container)
-        return _binding.root
+        return _binding!!.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -36,7 +36,7 @@ abstract class WsBaseFragment<VB : ViewBinding> : Fragment() {
         initData()
     }
 
-    abstract fun getBinding(inflater: LayoutInflater, viewGroup: ViewGroup?): VB
+    abstract  fun getBinding(inflater: LayoutInflater, viewGroup: ViewGroup?): VB
     abstract fun initView()
     abstract fun initListener()
     abstract fun initViewModel()
@@ -50,6 +50,11 @@ abstract class WsBaseFragment<VB : ViewBinding> : Fragment() {
 
     override fun onResume() {
         super.onResume()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }
